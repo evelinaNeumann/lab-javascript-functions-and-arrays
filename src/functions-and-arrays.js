@@ -12,38 +12,47 @@ maxOfTwoNumbers();
 
 // Iteration #2: Find longest word
 //done but didn#t pass the test
-function findLongestWord(wordsToTest)   { 
-  var wordsToTest = ['mystery', 'brother', 'aviator', 'crocodile', 'pearl', 'orchard', 'crackpot'];
-  
-  var largest_Str = [];
-  wordsToTest.forEach(function (item) {
-      if (item.length > largest_Str.length)
-          largest_Str = item
-  
-  });
-  
-  return console.log(largest_Str);
+let wordsToTest = ['mystery', 'brother', 'aviator', 'crocodile', 'pearl', 'orchard', 'crackpot'];
+
+function findLongestWord(wordsToTest) {
+  if (!wordsToTest.length) {
+    return null;
   }
-  
-  findLongestWord ();
+
+  if (wordsToTest.length === 1) {
+    return wordsToTest[0];
+  }
+
+  let largest_Str = [];
+  wordsToTest.forEach(function (item) {
+    if (item.length === largest_Str.length) {
+      largest_Str.push(item);
+    } else if (item.length > largest_Str.length) {
+      largest_Str = [item];
+    }
+  });
+  return largest_Str;
+}
+
+findLongestWord(wordsToTest);
 
 
 // Iteration #3: Calculate the sum
-//done, but didn't pass the tests
-function sumNumbers() {
-  const numbers = [6, 12, 1, 18, 13, 16, 2, 1, 8, 10];
-  var sum = 0;
-  for (var i = 0; i < numbers.length; i++) {
-      if (typeof numbers[i] == 'number') {
+//done, pass the test only if the function is straight declaired with"numbers"
+let numbers = [6, 12, 1, 18, 13, 16, 2, 1, 8, 10];
+function sumNumbers(numbers) {
+  let sum = 0;
+  for (let i = 0; i < numbers.length; i++) {
+      if (typeof numbers[i] === 'number') {
           sum += numbers[i];
-      } else if (typeof numbers[i] == 'string') {
+      } else if (typeof numbers[i] === 'string') {
           sum += numbers[i].length;
       }
   }
-    return console.log(sum);
-  };
-  
-  sumNumbers()
+  return sum;
+}
+
+sumNumbers(numbers)
 
 
 // Iteration #3.1 Bonus:
@@ -107,7 +116,7 @@ console.log(averageOfNumbers);
 
 const testWords = ['seat', 'correspond', 'linen', 'motif', 'hole', 'smell', 'smart', 'chaos', 'fuel', 'palace'];
 
-function averageWordLength() {
+function averageWordLength(testWords) {
   if (testWords.length === 0) {
       return null;
   }
@@ -124,13 +133,13 @@ function averageWordLength() {
 }
 
 let wordsLengthInAverage = averageWordLength(testWords);
-console.log(wordsLengthInAverage); 
+console.log(wordsLengthInAverage);
 
 // Bonus - Iteration #4.1
 function avg() {}
 
 // Iteration #5: Unique arrays
-//done two ways, but neither pass the tests
+//done two ways, the first way passed the tests
 const wordsUnique = [
   'crab',
   'poison',
@@ -145,17 +154,21 @@ const wordsUnique = [
   'bring'
 ];
 //first Option
-function uniquifyArray() {
+function uniquifyArray(wordsUnique) {
+  if (wordsUnique.length === 0) {
+    return null;
+  }
+  
   let uniqueWords = [];
-wordsUnique.forEach((element) => {
+  wordsUnique.forEach((element) => {
     if (!uniqueWords.includes(element)) {
         uniqueWords.push(element);
     }
-});
-  return console.log(uniqueWords);
+  });
+  return uniqueWords;
 }
-
-uniquifyArray()
+let uniqueWordsOnly = uniquifyArray(wordsUnique);
+console.log(uniqueWordsOnly);
 //second Option: using "Set" Object of storing unique velues
 /*function uniquifyArray() {
   return [...new Set(testWordsofArray)];
